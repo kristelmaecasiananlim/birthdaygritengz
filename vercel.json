@@ -1,7 +1,6 @@
 {
   "buildCommand": "",
   "outputDirectory": ".",
-  "framework": "static",
   "cleanUrls": true,
   "github": {
     "enabled": false
