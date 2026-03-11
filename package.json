@@ -1,0 +1,20 @@
+{
+  "name": "happy-birthday-sheena",
+  "version": "1.0.0",
+  "description": "A beautiful, interactive blue-themed bouquet greeting site for Sheena Marie M. Caberte",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 3000",
+    "dev": "npx http-server -p 3000 -o"
+  },
+  "keywords": [
+    "birthday",
+    "greeting",
+    "interactive",
+    "bouquet",
+    "celebration"
+  ],
+  "author": "Kristel Mae C. Lim",
+  "license": "MIT",
+  "devDependencies": {}
+}
