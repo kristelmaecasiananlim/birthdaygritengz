@@ -3,80 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sheena Marie - Birthday Bloom</title>
+    <title>Happy Birthday Sheena Marie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="background" id="background"></div>
-    <canvas id="particleCanvas" class="particle-canvas"></canvas>
+<body class="phase-night">
     
-    <div class="app-container">
-        <!-- Header -->
-        <header class="header">
-            <h1>Sheena Marie</h1>
-            <p id="instruction">Who is your best friend?</p>
-            <div class="answer-group">
-                <input 
-                    type="text" 
-                    id="answerInput" 
-                    placeholder="Type your answer..." 
-                    class="answer-input"
-                    autocomplete="off"
-                >
-                <button id="submitBtn" class="submit-btn">Submit</button>
+    <!-- Background Environments -->
+    <div class="sky-container">
+        <!-- Night elements -->
+        <div class="stars" id="stars"></div>
+        
+        <!-- Day elements -->
+        <div class="clouds day-element">
+            <!-- Simplified vector clouds matching the image -->
+            <svg class="cloud c1" viewBox="0 0 120 60"><path fill="#ffffff" d="M20,40 Q20,20 40,20 Q45,5 65,10 Q85,0 100,20 Q115,20 115,35 Q115,50 100,50 L30,50 Q10,50 20,40 Z" opacity="0.6"/></svg>
+            <svg class="cloud c2" viewBox="0 0 120 60"><path fill="#ffffff" d="M20,40 Q20,20 40,20 Q45,5 65,10 Q85,0 100,20 Q115,20 115,35 Q115,50 100,50 L30,50 Q10,50 20,40 Z" opacity="0.4"/></svg>
+            <svg class="cloud c3" viewBox="0 0 120 60"><path fill="#ffffff" d="M20,40 Q20,20 40,20 Q45,5 65,10 Q85,0 100,20 Q115,20 115,35 Q115,50 100,50 L30,50 Q10,50 20,40 Z" opacity="0.5"/></svg>
+        </div>
+        
+        <!-- Butterflies in the day sky -->
+        <div class="butterflies day-element" id="butterflies"></div>
+    </div>
+
+    <!-- UI Overlay container -->
+    <div class="ui-layer">
+        
+        <!-- Phase 1: Input -->
+        <div class="central-card active-phase" id="inputPhase">
+            <h1 class="serif-title">Sheena Marie</h1>
+            <p class="subtitle">Who is your best friend?</p>
+            
+            <div class="input-wrapper">
+                <input type="text" id="answerInput" placeholder="Your answer..." autocomplete="off">
+                <button id="submitBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
             </div>
-            <p id="status" class="status"></p>
-        </header>
+            <p id="statusMessage" class="status-msg"></p>
+        </div>
 
-        <!-- Main Experience -->
-        <main class="main-experience">
-            <!-- Cake Section -->
-            <div id="cakeSection" class="cake-section active">
-                <div class="cake-wrapper">
-                    <div class="cake">
-                        <div class="cake-layer cake-bottom"></div>
-                        <div class="cake-layer cake-middle"></div>
-                        <div class="cake-layer cake-top"></div>
-                    </div>
-
-                    <div class="candles-container">
-                        <div class="candle">
-                            <div class="flame"></div>
-                            <div class="candle-stick"></div>
-                        </div>
-                        <div class="candle">
-                            <div class="flame"></div>
-                            <div class="candle-stick"></div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Phase 2: Cake -->
+        <div class="cake-container hidden-phase" id="cakePhase">
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-top"></div>
+                <!-- Candles injected here -->
+                <div class="candles" id="candlesContainer"></div>
             </div>
+            <p class="instruction-text">Make a wish and blow out the candles.</p>
+        </div>
+        
+        <!-- Phase 3: Field Instruction -->
+        <div class="field-instruction hidden-phase" id="fieldInstruction">
+            <p class="serif-title small">Click each tulip</p>
+            <p class="subtitle">to bloom your memories.</p>
+        </div>
 
-            <!-- Bouquet Section (Hidden Initially) -->
-            <div id="bouquetSection" class="bouquet-section hidden">
-                <div class="bouquet-wrapper">
-                    <div class="stem-container">
-                        <div class="stem"></div>
-                    </div>
+    </div>
+    
+    <!-- Phase 3: The Tulip Field -->
+    <div class="flower-field day-element" id="flowerField"></div>
 
-                    <div class="petals-container" id="petalsContainer">
-                        <!-- Image petals will be generated here -->
-                    </div>
-
-                    <div class="leaves">
-                        <div class="leaf leaf-left"></div>
-                        <div class="leaf leaf-right"></div>
-                    </div>
-
-                    <div class="ribbon-bow"></div>
-                </div>
-            </div>
-        </main>
-
-        <!-- Message -->
-        <footer class="footer">
-            <p id="footerMessage" class="footer-message"></p>
-        </footer>
+    <!-- Memory Modal -->
+    <div class="modal hidden" id="imageModal">
+        <div class="modal-bg" id="modalBg"></div>
+        <div class="modal-content">
+            <button class="close-btn" id="closeBtn">&times;</button>
+            <img id="modalImg" src="" alt="Memory">
+            <p id="modalTxt" class="serif-title small italic mt-4"></p>
+        </div>
     </div>
 
     <script src="script.js"></script>
